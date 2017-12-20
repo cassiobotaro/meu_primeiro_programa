@@ -34,37 +34,41 @@ def modoastavel():
         capacitor = float(input('Digite o valor do capacitor(uF): '))
         resistor_a = float(input('Digite o valor de RA(k ohms): '))
         resistor_b = float(input('Digite o valor de RB(k ohms): '))
+        frequencia = 1.44 / ((resistor_a + 2 * resistor_b) * capacitor)
+        frequencia *= 1000  # hertz
+        nivel_alto = 0.693 * ((resistor_a + resistor_b) * capacitor)
+        nivel_baixo = 0.693 * resistor_b * capacitor
         if (1 <= resistor_a <= 10000) and (1 <= resistor_b <= 10000):
             desenho = '''
                              î VCC
-                 {resistor_a:5.3}       |
+                 {resistor_a:5.3f}       |
                   _/\/\/\----|__ _ __ _ _
                  |           |           |
                  |   ||= = = = = = =||   |
                  /---||7      8   4 ||---|
-        {resistor_b:5.3}    \   ||             ||
+        {resistor_b:5.3f}    \   ||             ||
                  /   ||             ||
                  \---||6    555    3||---SAIDA
                  |   ||             ||
                  |---||2          5 ||---|
                  |   ||      1      ||   |
                __|__ ||= = = = = = =|| __|__
-               _____ {capacitor:5.3}    |        _____
+               _____ {capacitor:5.3f}    |        _____
                  |            |          | 10
                  |____________|__________| nf
                             __|__
                              ___ GND
                               _
 
-            Frequência é : {frequencia:5.3} Khz
-            Tempo em nível alto do pulso: {nivel_alto:5.3} ms
-            Tempo em nível baixo do pulso: {nivel_baixo:5.3} ms
+            Frequência é : {frequencia:5.3f} hz
+            Tempo em nível alto do pulso: {nivel_alto:5.3f} ms
+            Tempo em nível baixo do pulso: {nivel_baixo:5.3f} ms
             '''.format(
                 resistor_a=resistor_a,
                 resistor_b=resistor_b,
-                frequencia=1.44 / ((resistor_a + 2 * resistor_b) * capacitor),
-                nivel_alto=0.693 * ((resistor_a + resistor_b) * capacitor),
-                nivel_baixo=0.693 * resistor_b * capacitor,
+                frequencia=frequencia,
+                nivel_alto=nivel_alto,
+                nivel_baixo=nivel_baixo,
                 capacitor=capacitor
             )
             print(desenho)
@@ -101,40 +105,37 @@ def modomono():
                                _
         '''
         print(desenho)
-        resistor = float(input('Digite o valor de R(ohm): '))
-        capacitor = float(input('Digite o valor do capacitor(F): '))
-        if 10 <= resistor <= 10000:
-            temporizacao = 1.1 * resistor * capacitor
-            desenho = '''
-                                    î VCC
-                    {resistor:5.3}           |
-                       /\/\/\------ |__ _ __ _ _
-                       |            |          |
-                       |  ||= = = = = = =||    |
-                       ---||7      8   4 ||----|
-                       |  ||             ||
-                       |  ||             ||
-                       |--||6   555    3 ||---SAIDA
-                       |  ||             ||
-              Disparo--)--||2          5 ||---|
-                       |  ||      1      ||   |
-                       |  ||= = = = = = =|| __|__
-                     __|__         |        _____
-                {capacitor:5.3}_____         |          | 10
-                       |___________|__________| nf
-                                 __|__
-                                  ___ GND
-                                   _
+        resistor = float(input('Digite o valor de R(K ohms): '))
+        capacitor = float(input('Digite o valor do capacitor(uF): '))
+        temporizacao = 1.1 * resistor * capacitor
+        desenho = '''
+                                î VCC
+                {resistor:5.3f}           |
+                   /\/\/\------ |__ _ __ _ _
+                   |            |          |
+                   |  ||= = = = = = =||    |
+                   ---||7      8   4 ||----|
+                   |  ||             ||
+                   |  ||             ||
+                   |--||6   555    3 ||---SAIDA
+                   |  ||             ||
+          Disparo--)--||2          5 ||---|
+                   |  ||      1      ||   |
+                   |  ||= = = = = = =|| __|__
+                 __|__         |        _____
+            {capacitor:5.3f}_____         |          | 10
+                   |___________|__________| nf
+                             __|__
+                              ___ GND
+                               _
 
-            Temporização é: {temporizacao:5.3} segundos.
-            '''.format(
-                resistor=resistor,
-                capacitor=capacitor,
-                temporizacao=temporizacao
-            )
-            print(desenho)
-        else:
-            print('resistor com valores inválidos.')
+        Temporização é: {temporizacao:5.3f} ms.
+        '''.format(
+            resistor=resistor,
+            capacitor=capacitor,
+            temporizacao=temporizacao
+        )
+        print(desenho)
         flag = 'invalido'
         while flag not in ('sim', 'nao'):
             flag = input('Deseja calcular novamente (sim/nao): ')
@@ -177,6 +178,7 @@ def main():
         else:
             print("Opção inválida")
             sleep(.5)
+
 
 if __name__ == '__main__':
     main()
