@@ -11,7 +11,7 @@ i:=0;
 while i=0 do
 begin
 clrscr;
-writeln('                       Ó VCC           ');
+writeln('                       √Æ VCC           ');
 writeln('             RA        |               ');
 writeln('           /\/\/\------|__ _ __ _ _    ');
 writeln('          |            |          |    ');
@@ -39,11 +39,11 @@ readln(rb);
 if (ra>=1)and(rb>=1)and(ra<=10000)and (rb<=10000)then
 begin
 clrscr;
-writeln('                  Ó VCC           ');
-writeln('           ',ra:2:1,'    |               ','FrequÍncia È:',1.44/(((ra+(2*rb))*c1)):5:2,'  Khz');
-writeln('      /\/\/\------|__ _ __ _ _    ', 'Tempo em nÌvel alto do pulso',(0.693*((ra+rb)*c1)):5:2,'ms');
+writeln('                  √Æ VCC           ');
+writeln('           ',ra:2:1,'    |               ','Frequ√™ncia √©:',1.44/(((ra+(2*rb))*c1)):5:2,'  Khz');
+writeln('      /\/\/\------|__ _ __ _ _    ', 'Tempo em n√≠vel alto do pulso',(0.693*((ra+rb)*c1)):5:2,'ms');
 writeln('     |            |          |    ','Tempo em nivel baixo do pulso',(0.693*rb*c1):5:2,'ms');
-writeln('     |   ||= = = = = = =||   |    ','Periodo È:',((0.693*((ra+rb)*c1))+(0.693*rb*c1)):5:2);
+writeln('     |   ||= = = = = = =||   |    ','Periodo √©:',((0.693*((ra+rb)*c1))+(0.693*rb*c1)):5:2);
 writeln('     /---||7      8   4 ||---|    ');
 writeln('  ',rb:2:1,'\   ||             ||        ');
 writeln('     /   ||             ||        ');
@@ -85,7 +85,7 @@ cont:=0;
 while cont=0 do
 begin
 clrscr;
-writeln('                       Ó VCC            ');
+writeln('                       √Æ VCC            ');
 writeln('              R        |                ');
 writeln('           /\/\/\------|__ _ __ _ _     ');
 writeln('           |           |           |    ');
@@ -111,7 +111,7 @@ readln(c);
 if(r>=10)and(r<=10000)then
 begin
 clrscr;
-writeln('                        Ó VCC           ');
+writeln('                        √Æ VCC           ');
 writeln('     ',r:2:2,'ohm','         |                ');
 writeln('           /\/\/\------ |__ _ __ _ _     ');
 writeln('           |            |          |    ');
@@ -131,7 +131,7 @@ writeln('                     __|__              ');
 writeln('                      ___ GND           ');
 writeln('                       _                ');
 writeln('');
-writeln('TemporizaÁ„o È:',(1.1*r*c):5:2,'segundos');
+writeln('Temporiza√ß√£o √©:',(1.1*r*c):5:2,'segundos');
 writeln('Deseja calcular outro?(s/n)');
 readln(op);
 if op='s'
@@ -163,11 +163,11 @@ while opcao<>'3' do
 begin
 clrscr;
 gotoxy(30,26);
-writeln('By Skin(D3Iaut2)');
+writeln('By Kcio(D3Iaut2)');
 gotoxy(0,0);
-writeln('Progama para calculos do multivibrador 555                         Vers„o 3.0');
+writeln('Progama para calculos do multivibrador 555                         Vers√£o 3.0');
 gotoxy(4,4);
-writeln('               Bem vindo ao menu de opÁıes escolha sua opÁ„o:');
+writeln('               Bem vindo ao menu de op√ß√µes escolha sua op√ß√£o:');
 writeln('                                                     ');
 writeln('                                     |              ');
 writeln('                                     |              ');
@@ -183,7 +183,7 @@ writeln('                            ||= = = = = = =||       ');
 writeln('                                    |               ');
 writeln('                                    |               ');
 writeln('                                                    ');
-writeln('              1-Modo Ast·vel,2-Modo Monoest·vel,3-fim do programa');
+writeln('              1-Modo Ast√°vel,2-Modo Monoest√°vel,3-fim do programa');
 gotoxy(37,21);
 readln(opcao);
 CASE opcao OF
